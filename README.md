@@ -32,5 +32,5 @@ A high-performance React dashboard built with Vite to visualize 5,000+ spatial d
 
 1. Clone the repository:
    ```bash
-   git clone [Your Repository URL]
+   git clone https://github.com/Ramchandran06/geo-dashboard.git
    ```
