@@ -16,7 +16,6 @@ import {
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
-// Leaflet default icon fix (இல்லையென்றால் மார்க்கர் தெரியாது)
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 let DefaultIcon = L.icon({
@@ -37,7 +36,7 @@ const mockData = Array.from({ length: 5000 }, (_, i) => ({
   lastUpdated: new Date().toLocaleDateString(),
 }));
 
-// MapView helper to move camera
+
 function ChangeView({ center }) {
   const map = useMap();
   useEffect(() => {
@@ -52,7 +51,7 @@ function App() {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [search, setSearch] = useState("");
 
-  // 2. Client-side Filtering Logic
+  
   const filteredData = useMemo(() => {
     return mockData.filter(
       (item) =>
@@ -61,7 +60,7 @@ function App() {
     );
   }, [search]);
 
-  // 3. Pagination Logic (to handle performance)
+  
   const paginatedData = useMemo(() => {
     return filteredData.slice(
       page * rowsPerPage,
@@ -91,7 +90,7 @@ function App() {
       </Paper>
 
       <Box sx={{ display: "flex", flex: 1, gap: 2, p: 2, minHeight: 0 }}>
-        {/* Table Section */}
+        
         <Paper
           sx={{
             flex: 1,
@@ -155,7 +154,7 @@ function App() {
           />
         </Paper>
 
-        {/* Map Section */}
+      
         <Box
           sx={{
             flex: 1.2,
@@ -173,7 +172,7 @@ function App() {
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             <ChangeView center={selectedLocation} />
 
-            {/* Displaying markers only for current page to keep it lag-free */}
+            
             {paginatedData.map((row) => (
               <Marker
                 key={row.id}
